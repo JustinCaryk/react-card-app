@@ -5,9 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
-
-// PAGE STRUCTURE
-
+// ================================================= //
+// ================================================= //
+// ================== PAGE STRUCTURE =============== //
+// ================================================= //
+// ================================================= //
 function Card(props) {
     return (
         <div className="card">
@@ -39,13 +41,17 @@ function CardList() {
                 <MasterForm />
             </div>
             <div className="col-sm-4">
-                <Card />
+                <GithubSearchApp />
             </div>
         </div>
     );
 }
 
-// FORM SHTUFFF
+// ================================================= //
+// ================================================= //
+// ============= FORM SHTUFFF ====================== //
+// ================================================= //
+// ================================================= //
 
 //big daddy form
 class MasterForm extends React.Component {
@@ -233,6 +239,77 @@ function Step3(props) {
     );
 }
 
+// ================================================= //
+// ================================================= //
+// ============= github search ===================== //
+// ================================================= //
+// ================================================= //
+
+const API = 'https://api.github.com/';
+
+const Header = () => {
+    return (
+        <div className="jumbotron">
+            <h1>Github Search</h1>
+            <h2>Search users in Github using this simple React App.</h2>
+            <p>Click on the card to see more detail about individual users. The search default is now cusbus</p>
+        </div>
+    );
+};
+
+class GithubSearchApp extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            searchText: 'cusbus',
+            data: '',
+        }
+    }
+
+    fetchSearch = username => {
+        const url = `${API}search/users?q=${username}`;
+
+        fetch(url)
+            .then(res => res.json() )
+            .then(data => {
+                this.setState({
+                    data: data,
+                })
+            })
+            .catch(error => console.log('error' + error))
+    } 
+    
+    componentDidMount() {
+        this.fetchSearch(this.state.searchText);
+    }
+    
+    render() {
+        return (
+            <div>
+                <Header />
+                {/* <SearchForm 
+                    fetchSearch={this.fetchSearch}
+                />
+                <Profiles
+                    data={this.state.data}
+                /> */}
+            </div>
+        );
+    }
+}
+
+
+
+
+
+
+
+// ================================================= //
+// ================================================= //
+// ============= render it alllllll ====================== //
+// ================================================= //
+// ================================================= //
 
 
 
