@@ -24,3 +24,7 @@
 .container.site-content {
   margin-top: 50px;
 }
+
+.card-body.b-top-1 {
+  border-top: solid 1px #ddd;
+}

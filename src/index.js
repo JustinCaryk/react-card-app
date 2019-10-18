@@ -36,7 +36,16 @@ function CardList() {
                 />
             </div>
             <div className="col-sm-4">
-                <MasterForm />
+                <div className="card">
+                    <img className="card-img-top"
+                        src="https://i.pinimg.com/originals/c7/c3/a0/c7c3a029d172b33287003d26a0c693f9.png"
+                        alt="cap"
+                    />
+                    <div className="card-body b-top-1">
+                        <h5 className="card-title">A Wizard's Form</h5>
+                        <MasterForm />
+                    </div>
+                </div>        
             </div>
             <div className="col-sm-4">
                 <Card />
@@ -135,8 +144,7 @@ class MasterForm extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <h1>A Wizard Form!</h1>
-                <p>Step {this.state.currentStep}</p>
+                <p>(Step {this.state.currentStep})</p>
 
                 <form onSubmit={this.handleSubmit}>
                     {/*
